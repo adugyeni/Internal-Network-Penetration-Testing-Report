@@ -1,21 +1,27 @@
 # INTERNAL NETWORK PENETRATION TESTING REPORT
 #### BY ADU GYENI BENJAMIN
 
-### Table of Contents
-1. [Summary](#summary)
-2. [Testing_Methodogy](#TestingMethodogy)
-3. [Host_Discovery](#HostDiscovery)
-4. [Sevice_Discovery_and_Port_Scanning](#SeviceDiscoveryandPortScanning)
-5. [Web-Based_Attack_Surfaces](#Web-BasedAttackSurfaces)
-6. [Generating_Payloads](#GeneratingPayloads)
+---
 
 ### Summary
 An Internal Network Penetration Test was performed on a scope comprising 10.10.10.0/24 and a domain name https://virtualinfosecafrica.com/ from September 12th, 2024 to September 14th, 2024. This report describes penetration testing that represents a point in time snapshots of the network security posture of the scope in question which can be found in the subsequent sessions.
 
+This project demonstrates my ability to perform a full internal network penetration test on a simulated enterprise environment (10.10.10.0/24).  
+Using industry‑standard tools such as Nmap, Metasploit, Eyewitness, and custom wordlists, I identified multiple high‑impact vulnerabilities including:
+
+• Apache 2.4.49/2.4.50 Unauthenticated RCE (CVSS 9.8)  
+• Apache Tomcat AJP Ghostcat File Inclusion (CVSS 9.8)  
+• UltraVNC DSM Plugin Local Privilege Escalation (CVSS 7.8)  
+• MySQL DoS vulnerabilities (CVSS 6.5)
+
+This report showcases my ability to enumerate services, validate vulnerabilities, generate exploit payloads, and provide actionable remediation steps.  
+
+---
 
 ### Testing Methodogy
 Testing took off by utilizing the Network Mapper(NMAP) tool to locate live hosts and services in the in-scope ip address provided. The output of this tooling was then manually examined and the host and services were manually enumerated to uncover any missed vulnerability and weakness. Web-based attack surfaces were exploited to generate payloads.
 
+---
 
 ### Host Discovery
 Host discovery is a process of finding live hosts on a network. It can be used to narrow down the scope of a network assessment or during security testing. One tool which is mostly used in host discovery is the nmap tool. The command used in the host discovery was " nmap -sn 10.10.10.0/24 ", where " -sn (or --ping-scan) " - tells nmap to perform a "ping scan" which is used to discover hosts without performing a full port scan. It will only check if hosts are alive, not what services they are running.
@@ -27,31 +33,32 @@ The below image is a description of how subdomain enumeration was performed usin
 
 ![Aiodnsbrute](Images/aiodns.png)
 
-
+---
 
 ### Service Discovery And Port Scanning
 Service discovery and port scanning are essential techniques in network management, security and administration.
 
-##### Service Discovery
+##### Service Discovery:
 - **Purpose:** Identifies active services on a network, such as web servers or databases.
 - **Benefits:**
   - **Configuration Management:** Helps administrators verify and manage service configurations.
   - **Troubleshooting:** Assists in diagnosing and resolving network issues by revealing which services are running.
   - **Security:** Aids in identifying potential vulnerabilities by showing what services are exposed and their current state.
 
-##### Port Scanning
+##### Port Scanning:
 - **Purpose:** Detects open ports on networked devices, revealing which services are available.
 - **Benefits:**
   - **Network Mapping:** Helps in understanding the network layout and available services.
   - **Security Assessment:** Identifies open ports and services that may be vulnerable, aiding in vulnerability management.
   - **Compliance:** Ensures systems meet security policies and standards by regularly checking for unintended open ports.
 
-##### Combined Use
+##### Combined Use:
 - **Enhanced Security:** Together, these techniques provide a comprehensive view of network security, identifying vulnerabilities and ensuring proper configuration.
 - **Efficient Management:** They help in maintaining a secure and well-managed network environment by detecting potential issues early.
   
 ![Service Discovery and Port Scanning](Images/sdps.png)
 
+---
 
 ### Vulnerability Scanning
 Vulnerability scanning is an automated process that identifies security weaknesses in systems, networks, or applications. It helps detect unpatched software, misconfigurations, and other vulnerabilities that could be exploited. The scanning process involves discovering live hosts, scanning for known issues, analyzing results, and generating reports. 
@@ -59,9 +66,6 @@ Vulnerability scanning is an automated process that identifies security weakness
 - The image below shows how a custom wordlist can be created using cewl and also procedure used during the vulnerability scanning:
 
 ![Vulnerability Scanning](Images/vulnerability_scanning.png)
-
----
-
 
 #### Summary of Findings
 | Finding                                        | Severity |
@@ -71,6 +75,8 @@ Vulnerability scanning is an automated process that identifies security weakness
 |UltraVNC DSM Plugin Local Privilege Escalation                   | High     |
 | Apache Tomcat AJP File Read/Inclusion |Critical  |
 
+---
+
 #### Detailed Findings
 #### Unauthenticated Remote Code Execution (RCE)
 
@@ -79,25 +85,21 @@ Vulnerability scanning is an automated process that identifies security weakness
 |Critical           |   9.8         |
 
 #### Evidence
-This module exploit an unauthenticated RCE vulnerability which 
-  exists in Apache version 2.4.49 (CVE-2021-41773). If files outside 
-  of the document root are not protected by ‘require all denied’ 
-  and CGI has been explicitly enabled, it can be used to execute 
-  arbitrary commands (Remote Command Execution). This vulnerability 
-  has been reintroduced in Apache 2.4.50 fix (CVE-2021-42013).
+This module exploit an unauthenticated RCE vulnerability which exists in Apache version 2.4.49 (CVE-2021-41773). If files outside of the document root are not protected by ‘require all denied’ and CGI has been explicitly enabled, it can be used to execute arbitrary commands (Remote Command Execution). This vulnerability has been reintroduced in Apache 2.4.50 fix (CVE-2021-42013).
 
   - Output after using metaploit auxilliary module
     ![metasploit 1](Images/metasploit1.png)
 
     ![metasploit 2](Images/metasploit2.png)
 
- #### Affected Resources are;
+#### Affected Resources are;
       '10.10.10.2, 10.10.10.30, 10.10.10.45, 10.10.10.55'
 
- #### Recommendations
+#### Recommendations
       Update to a newer patched version of Apache HTTP Server.
 
 ---
+
 ### Denial of service (DoS)
 
 | *Current Rating:* | CVSS Score   |
@@ -126,8 +128,8 @@ CVE-2020-14769: Found in the Optimizer component of MySQL Server, this vulnerabi
 
 * Load Balancing: Distribute incoming traffic across multiple servers or resources. This can help prevent any single server from being overwhelmed and ensure continuity of service.
 
-
 ---
+
 ### UltraVNC DSM Plugin Local Privilege Escalation Vulnerability
 | *Current Rating:* | CVSS Score   |
 |-------------------|--------------|
@@ -162,6 +164,7 @@ Allows attackers to read or include files from the server using the AJP connecto
 #### Evidence
 `Ghostcat` - CVE-2020-193: When using the Apache JServ Protocol (AJP), care must be taken when trusting incoming connections to Apache Tomcat. Tomcat treats AJP connections as having higher trust than, for example, a similar HTTP connection. If such connections are available to an attacker, they can be exploited in ways that may be surprising. In Apache Tomcat 9.0.0.M1 to 9.0.0.30, 8.5.0 to 8.5.50 and 7.0.0 to 7.0.99, Tomcat shipped with an AJP Connector enabled by default that listened on all configured IP addresses. It was expected (and recommended in the security guide) that this Connector would be disabled if not required. This vulnerability report identified a mechanism that allowed: - returning arbitrary files from anywhere in the web application - processing any file in the web application as a JSP Further, if the web application allowed file upload and stored those files within the web application (or the attacker was able to control the content of the web application by some other means) then this, along with the ability to process a file as a JSP, made remote code execution possible. It is important to note that mitigation is only required if an AJP port is accessible to untrusted users. Users wishing to take a defence-in-depth approach and block the vector that permits returning arbitrary files and execution as JSP may upgrade to Apache Tomcat 9.0.31, 8.5.51 or 7.0.100 or later. A number of changes were made to the default AJP Connector configuration in 9.0.31 to harden the default configuration. It is likely that users upgrading to 9.0.31, 8.5.51 or 7.0.100 or later will need to make small changes to their configurations.
 
+---
 
 ### Web-Based Attack Surfaces
 Web-based attack surfaces include web application interfaces, authentication mechanisms, APIs, and server configurations, each posing potential security risks like SQL injection or session hijacking. Key security measures involve input validation, secure session management, and keeping software updated. Addressing vulnerabilities in these areas helps protect against exploits and enhances overall web security.
