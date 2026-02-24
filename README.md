@@ -18,6 +18,16 @@ This report showcases my ability to enumerate services, validate vulnerabilities
 
 ---
 
+## Disclaimer
+
+All IP addresses, hostnames, and domain names referenced in this report belong to an isolated, non‑production lab environment created solely for educational, training, and demonstration purposes. 
+
+No real-world organizations, systems, or networks were accessed or tested during the creation of this project. Any resemblance to actual infrastructure is purely coincidental. 
+
+This report is intended to showcase penetration testing methodology, documentation skills, and technical analysis for portfolio and learning purposes only.
+
+---
+
 ### Testing Methodogy
 Testing took off by utilizing the Network Mapper(NMAP) tool to locate live hosts and services in the in-scope ip address provided. The output of this tooling was then manually examined and the host and services were manually enumerated to uncover any missed vulnerability and weakness. Web-based attack surfaces were exploited to generate payloads.
 
@@ -197,13 +207,13 @@ Web-based attack surfaces include web application interfaces, authentication mec
 
 ---
 
-## Disclaimer
+## Conclusion
+The internal network penetration test conducted against the 10.10.10.0/24 lab environment and the LAB-DOMAIN infrastructure provided a clear view of the security posture of the simulated enterprise network. Through systematic host discovery, service enumeration, vulnerability scanning, and targeted exploitation, several critical and high‑severity weaknesses were identified, including unauthenticated Remote Code Execution in Apache HTTP Server, Ghostcat AJP file inclusion in Apache Tomcat, UltraVNC local privilege escalation, and multiple MySQL denial‑of‑service vulnerabilities.
 
-All IP addresses, hostnames, and domain names referenced in this report belong to an isolated, non‑production lab environment created solely for educational, training, and demonstration purposes. 
+These findings demonstrate how outdated software versions, misconfigurations, and exposed services can significantly increase the attack surface of an internal network. The vulnerabilities discovered—particularly those rated Critical—highlight the potential for attackers to gain unauthorized access, escalate privileges, disrupt services, or compromise sensitive data if left unaddressed.
 
-No real-world organizations, systems, or networks were accessed or tested during the creation of this project. Any resemblance to actual infrastructure is purely coincidental. 
+Overall, this assessment reinforces the importance of regular patching, secure configuration practices, continuous monitoring, and proactive vulnerability management. Implementing the recommended remediation steps will greatly enhance the resilience of the environment and reduce the likelihood of successful exploitation. This project also showcases the practical application of penetration testing methodologies, analytical thinking, and technical reporting skills essential for real‑world cybersecurity operations.
 
-This report is intended to showcase penetration testing methodology, documentation skills, and technical analysis for portfolio and learning purposes only.
 
   
 
