@@ -132,11 +132,10 @@ CVE-2020-14769: Found in the Optimizer component of MySQL Server, this vulnerabi
 `10.10.10.5 , 10.10.10.40`
 
 #### Recommendations
-* Rate Limiting: Implement rate limiting to control the number of requests a user can make to a service in a given timeframe. This can help mitigate the impact of DoS attacks by limiting the number of requests that can overwhelm the system.
-
-* Traffic Filtering and Shaping: Use firewalls and intrusion prevention systems (IPS) to filter out malicious traffic. Traffic shaping can prioritize legitimate traffic and limit the impact of the attack.
-
-* Load Balancing: Distribute incoming traffic across multiple servers or resources. This can help prevent any single server from being overwhelmed and ensure continuity of service.
+* Upgrade MySQL to a supported version (5.7 or 8.0)
+* Apply Oracle’s security patches
+* Traffic filtering and shaping by using se firewalls and intrusion prevention systems (IPS) to filter out malicious traffic. 
+* Load balancing by distribute incoming traffic across multiple servers or resources. 
 
 ---
 
@@ -159,7 +158,9 @@ CVE-2022-24750	UltraVNC is a free and open source remote pc access software. A v
 `10.10.10.50`
 
 #### Recommendation
-Upgrade to the latest version preferably version UltraVNC 1.5.0.0
+- Upgrade to 1.3.8.1 or later
+- Avoid running UltraVNC as a service
+- Use scheduled tasks under low‑privilege accounts
 
 ---
 
