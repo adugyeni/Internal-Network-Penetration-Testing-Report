@@ -77,7 +77,9 @@ Vulnerability scanning is an automated process that identifies security weakness
 
 ![Vulnerability Scanning](Images/vulnerability_scanning.png)
 
-#### Summary of Findings
+---
+
+### Summary of Findings
 | Finding                                        | Severity |
 |------------------------------------------------|----------|
 | Unauthenticated Remote Code Execution (RCE) | Critical    |
@@ -85,9 +87,10 @@ Vulnerability scanning is an automated process that identifies security weakness
 |UltraVNC DSM Plugin Local Privilege Escalation                   | High     |
 | Apache Tomcat AJP File Read/Inclusion |Critical  |
 
----
+### Evidence Availability Notice
+This penetration test was conducted in a temporary, controlled lab environment created specifically for training and assessment. Since the environment is no longer accessible, some screenshots originally captured during testing cannot be reproduced. The vulnerability descriptions, CVEs, service versions, and analysis documented in this report accurately reflect the issues identified during the engagement, even where supporting screenshots are not included. All findings are based on the actual enumeration and exploitation performed at the time of testing.
 
-#### Detailed Findings
+### Detailed Findings
 #### Unauthenticated Remote Code Execution (RCE)
 
 | *Current Rating:* | CVSS Score   |
