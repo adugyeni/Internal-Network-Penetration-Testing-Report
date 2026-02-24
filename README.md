@@ -4,7 +4,7 @@
 ---
 
 ### Summary
-An Internal Network Penetration Test was performed on a scope comprising 10.10.10.0/24 and a domain name https://virtualinfosecafrica.com/ from September 12th, 2024 to September 14th, 2024. This report describes penetration testing that represents a point in time snapshots of the network security posture of the scope in question which can be found in the subsequent sessions.
+An Internal Network Penetration Test was performed on a scope comprising 10.10.10.0/24 and a domain name `LAB-DOMAIN` from September 12th, 2024 to September 14th, 2024. This report describes penetration testing that represents a point in time snapshots of the network security posture of the scope in question which can be found in the subsequent sessions.
 
 This project demonstrates my ability to perform a full internal network penetration test on a simulated enterprise environment (10.10.10.0/24).  
 Using industry‑standard tools such as Nmap, Metasploit, Eyewitness, and custom wordlists, I identified multiple high‑impact vulnerabilities including:
@@ -194,6 +194,16 @@ Web-based attack surfaces include web application interfaces, authentication mec
 | Medium             | 4.0 – 6.9    |
 | High               | 7.0 – 8.9    |
 | Critical           | 9.0 – 10.0   |
+
+---
+
+## Disclaimer
+
+All IP addresses, hostnames, and domain names referenced in this report belong to an isolated, non‑production lab environment created solely for educational, training, and demonstration purposes. 
+
+No real-world organizations, systems, or networks were accessed or tested during the creation of this project. Any resemblance to actual infrastructure is purely coincidental. 
+
+This report is intended to showcase penetration testing methodology, documentation skills, and technical analysis for portfolio and learning purposes only.
 
   
 
